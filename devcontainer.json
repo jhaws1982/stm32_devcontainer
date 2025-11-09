@@ -1,0 +1,29 @@
+{
+  "name": "Ubuntu",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      // Update 'VARIANT' to pick a Ubuntu version: ubuntu24.04, ubuntu22.04
+      "VARIANT": "ubuntu24.04"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers-extra/features/ninja-asdf:2": {},
+    "ghcr.io/devcontainers-extra/features/cmake:1": {
+      "version": "3.31.4"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cmake-tools",
+        "stmicroelectronics.stm32-vscode-extension"
+      ]
+    },
+    "settings": {
+      "cmake.sourceDirectory": "${workspaceFolder}/controls"
+    }
+  }
+}
