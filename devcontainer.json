@@ -3,14 +3,7 @@
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      // Update 'VARIANT' to pick a Ubuntu version: ubuntu24.04, ubuntu22.04
       "VARIANT": "ubuntu24.04"
-    }
-  },
-  "features": {
-    "ghcr.io/devcontainers-extra/features/ninja-asdf:2": {},
-    "ghcr.io/devcontainers-extra/features/cmake:1": {
-      "version": "3.31.4"
     }
   },
   "customizations": {
@@ -19,11 +12,34 @@
         "ms-vscode.cpptools",
         "ms-vscode.cpptools-extension-pack",
         "ms-vscode.cmake-tools",
-        "stmicroelectronics.stm32-vscode-extension"
+        "stmicroelectronics.stm32-vscode-extension",
+        "stmicroelectronics.stm32cube-ide-build-analyzer",
+        "stmicroelectronics.stm32cube-ide-build-cmake",
+        "stmicroelectronics.stm32cube-ide-bundles-manager",
+        "stmicroelectronics.stm32cube-ide-clangd",
+        "stmicroelectronics.stm32cube-ide-core",
+        "stmicroelectronics.stm32cube-ide-debug-core",
+        "stmicroelectronics.stm32cube-ide-debug-generic-gdbserver",
+        "stmicroelectronics.stm32cube-ide-debug-jlink-gdbserver",
+        "stmicroelectronics.stm32cube-ide-debug-stlink-gdbserver",
+        "stmicroelectronics.stm32cube-ide-project-manager",
+        "stmicroelectronics.stm32cube-ide-registers",
+        "stmicroelectronics.stm32cube-ide-rtos",
+        "marus25.cortex-debug",
+        "mcu-debug.debug-tracker-vscode",
+        "mcu-debug.memory-view",
+        "mcu-debug.peripheral-viewer",
+        "mcu-debug.rtos-views",
+        "eclipse-cdt.memory-inspector",
+        "eclipse-cdt.serial-monitor"
       ]
-    },
-    "settings": {
-      "cmake.sourceDirectory": "${workspaceFolder}/controls"
     }
-  }
+  },
+  "runArgs": [
+    "--privileged",
+    "--volume=/dev:/dev",
+    "--security-opt",
+    "seccomp=unconfined" // sometimes needed for libusb
+  ],
+  "remoteUser": "vscode"
 }
