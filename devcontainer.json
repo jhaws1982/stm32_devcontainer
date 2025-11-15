@@ -37,7 +37,8 @@
   },
   "runArgs": [
     "--privileged",
-    "--volume=/dev:/dev",
+    "--cap-add=SYS_ADMIN",
+    "--volume=/dev/bus/usb:/dev/bus/usb",
     "--security-opt",
     "seccomp=unconfined" // sometimes needed for libusb
   ],
