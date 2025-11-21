@@ -23,3 +23,24 @@ VS Code development container for STM32 development. Contains STM32 Command Line
 1. On your Side Bar, select Run and Debug, then click the Play button. This will build and start debugging your application on your target.
 
 
+## Windows Usage
+For use on Windows, you will need Docker Desktop and WSL2 installed.
+Building code will work without any additional changes on Windows. However, to get debugging to work, you also will need USBIP-win (get the latest release [here](https://github.com/dorssel/usbipd-win/releases/).
+
+Once you have WSL2 installed, run the following commands to setup a udev rule for ST-Link devices. This will ensure they have the proper permissions to pass through to the Docker container.
+```
+sudo bash -c 'echo "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"0483\", MODE=\"0666\"" > /etc/udev/rules.d/50-stlink.rules'
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+Then, to attach the debugger to your container, first attach the device to your machine and run the following commands:
+```
+# In an admin PowerShell
+usbipd list  # Make note of the BUSID value of the ST-Link Debug device listed
+usbipd bind --busid <busid>
+usbipd attach --wsl --busid <busid>
+
+# Inside the devcontainer
+lsusb
+```
