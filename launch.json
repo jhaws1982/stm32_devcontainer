@@ -1,0 +1,20 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "type": "cortex-debug",
+            "executable": "${command:cmake.launchTargetPath}",
+            "cwd": "${workspaceRoot}",
+            "request": "launch",
+            "device": "STM32L476RG",
+            "servertype": "stlink",
+            "stm32cubeprogrammer": "/home/vscode/.local/share/stm32cube/bundles/programmer/2.20.0/bin",
+            "stlinkPath": "/home/vscode/.local/share/stm32cube/bundles/stlink-gdbserver/7.11.0+st.1/bin/ST-LINK_gdbserver",
+            "armToolchainPath": "/home/vscode/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin",
+        }
+    ]
+}
